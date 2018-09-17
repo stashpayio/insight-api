@@ -11,17 +11,17 @@
       alt="API stability" />
   </a>
   <!-- Build Status -->
-  <a href="https://travis-ci.org/dashevo/insight-api">
-    <img src="https://img.shields.io/travis/dashevo/insight-api/master.svg?style=flat-square" alt="Build Status" />
+  <a href="https://travis-ci.org/stashpayio/insight-api">
+    <img src="https://img.shields.io/travis/stashpayio/insight-api/master.svg?style=flat-square" alt="Build Status" />
   </a>
   <!-- NPM version -->
-  <a href="https://npmjs.org/package/@dashevo/insight-api">
-    <img src="https://img.shields.io/npm/v/@dashevo/insight-api.svg?style=flat-square" alt="NPM version" />
+  <a href="https://npmjs.org/package/@stashcore/insight-api">
+    <img src="https://img.shields.io/npm/v/@stashcore/insight-api.svg?style=flat-square" alt="NPM version" />
   </a>
 </div>
 
 
-This is a backend-only service. If you're looking for the web frontend application, take a look at https://github.com/dashevo/insight-ui.
+This is a backend-only service. If you're looking for the web frontend application, take a look at https://github.com/stashpayio/insight-ui.
 
 ## Table of Content
 - [Getting Started](#getting-started)
@@ -62,7 +62,7 @@ This is a backend-only service. If you're looking for the web frontend applicati
 - [Notes on Upgrading from v0.3](#notes-on-upgrading-from-v03)
 - [Notes on Upgrading from v0.2](#notes-on-upgrading-from-v02)
 - [Resources](#resources)
-- [License](https://github.com/dashevo/insight-api-dash/blob/master/LICENSE)
+- [License](https://github.com/stashpayio/insight-api-dash/blob/master/LICENSE)
 
 ## Getting Started
 
@@ -78,7 +78,7 @@ The API endpoints will be available by default at: `http://localhost:3001/insigh
 
 ### Prerequisites
 
-- [Bitcore Node Dash 3.x](https://github.com/dashevo/dashcore-node)
+- [Bitcore Node Dash 3.x](https://github.com/stashpayio/dashcore-node)
 
 **Note:** You can use an existing Dash data directory, however `txindex`, `addressindex`, `timestampindex` and `spentindex` needs to be set to true in `dash.conf`, as well as a few other additional fields.
 
@@ -94,7 +94,7 @@ To protect the server, insight-api has a built it query rate limiter. It can be 
     }
   }
 ```
-With all the configuration options available: https://github.com/dashevo/insight-api/blob/master/lib/ratelimiter.js#L10-17
+With all the configuration options available: https://github.com/stashpayio/insight-api/blob/master/lib/ratelimiter.js#L10-17
 
 Or disabled entirely with:
 ``` json

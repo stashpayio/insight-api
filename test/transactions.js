@@ -1,7 +1,7 @@
 'use strict';
 var should = require('should');
 var sinon = require('sinon');
-var dashcore = require('@dashevo/dashcore-lib');
+var dashcore = require('@stashcore/stashcore-lib');
 var TxController = require('../lib/transactions');
 var _ = require('lodash');
 

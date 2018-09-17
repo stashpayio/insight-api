@@ -3,7 +3,7 @@ var sinon = require('sinon');
 var should = require('should');
 var AddressController = require('../lib/addresses');
 var _ = require('lodash');
-var dashcore = require('@dashevo/dashcore-lib');
+var dashcore = require('@stashcore/stashcore-lib');
 
 var txinfos = {
   totalCount: 2,
