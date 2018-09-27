@@ -1,6 +1,6 @@
 {
   "name": "@stashcore/insight-api",
-  "description": "A Dash blockchain REST and web socket API service for Dashcore Node.",
+  "description": "A Stash blockchain REST and web socket API service for Stashcore Node.",
   "version": "1.0.1",
   "repository": "git://github.com/stashpayio/insight-api.git",
   "contributors": [
@@ -46,11 +46,11 @@
     "insight",
     "insight api",
     "blockchain",
-    "dash api",
+    "stash api",
     "blockchain api",
     "json",
-    "bitcore-dash",
-    "dashcore"
+    "bitcore-stash",
+    "stashcore"
   ],
   "engines": {
     "node": ">=0.12.0"
@@ -59,10 +59,10 @@
     "test": "NODE_ENV=test mocha -R spec --recursive"
   },
   "main": "lib",
-  "dashcoreNode": "lib",
+  "stashcoreNode": "lib",
   "dependencies": {
-    "async": "*",
-    "@stashcore/stashcore-lib": "^0.15.5",
+    "async": "*",    
+    "@stashcore/stashcore-lib": "^0.15.15",
     "body-parser": "^1.13.3",
     "compression": "^1.6.1",
     "lodash": "=4.17.1",

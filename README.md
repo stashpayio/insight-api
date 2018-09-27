@@ -1,7 +1,7 @@
 <h1 align="center">Insight-api</h1>
 
 <div align="center">
-  <strong>A Dash blockchain REST and WebSocket API Service</strong>
+  <strong>A Stash blockchain REST and WebSocket API Service</strong>
 </div>
 <br />
 <div align="center">
@@ -62,25 +62,25 @@ This is a backend-only service. If you're looking for the web frontend applicati
 - [Notes on Upgrading from v0.3](#notes-on-upgrading-from-v03)
 - [Notes on Upgrading from v0.2](#notes-on-upgrading-from-v02)
 - [Resources](#resources)
-- [License](https://github.com/stashpayio/insight-api-dash/blob/master/LICENSE)
+- [License](https://github.com/stashpayio/insight-api-stash/blob/master/LICENSE)
 
 ## Getting Started
 
 ```bashl
-npm install -g dashcore-node@latest
-bitcore-node-dash create mynode
+npm install -g stashcore-node@latest
+bitcore-node-stash create mynode
 cd mynode
-dashcore-node install insight-api
-dashcore-node start
+stashcore-node install insight-api
+stashcore-node start
 ```
 
 The API endpoints will be available by default at: `http://localhost:3001/insight-api/`
 
 ### Prerequisites
 
-- [Bitcore Node Dash 3.x](https://github.com/stashpayio/dashcore-node)
+- [Bitcore Node Stash 3.x](https://github.com/stashpayio/stashcore-node)
 
-**Note:** You can use an existing Dash data directory, however `txindex`, `addressindex`, `timestampindex` and `spentindex` needs to be set to true in `dash.conf`, as well as a few other additional fields.
+**Note:** You can use an existing Stash data directory, however `txindex`, `addressindex`, `timestampindex` and `spentindex` needs to be set to true in `stash.conf`, as well as a few other additional fields.
 
 ### Query Rate Limit
 
@@ -110,15 +110,15 @@ Or disabled entirely with:
 
 ### Block
 ```
-  /insight-api-dash/block/[:hash]
-  /insight-api-dash/block/0000000006e7b38e8ab2d351239019c01de9a148b5baef58cfe52dfd9917cedc
+  /insight-api-stash/block/[:hash]
+  /insight-api-stash/block/0000000006e7b38e8ab2d351239019c01de9a148b5baef58cfe52dfd9917cedc
 ```
 
 ### Block Index
 Get block hash by height
 ```
-  /insight-api-dash/block-index/[:height]
-  /insight-api-dash/block-index/0
+  /insight-api-stash/block-index/[:height]
+  /insight-api-stash/block-index/0
 ```
 This would return:
 ```
@@ -131,7 +131,7 @@ which is the hash of the TestNet Genesis block (0 height)
 
 ### Raw Block
 ```
-  /insight-api-dash/rawblock/[:blockHash]
+  /insight-api-stash/rawblock/[:blockHash]
 ```
 
 This would return:
@@ -145,7 +145,7 @@ This would return:
 
 Get block summaries by date:
 ```
-  /insight-api-dash/blocks?limit=3&blockDate=2017-04-22
+  /insight-api-stash/blocks?limit=3&blockDate=2017-04-22
 ```
 
 Example response:
@@ -179,31 +179,31 @@ Example response:
 
 ### Transaction
 ```
-  /insight-api-dash/tx/[:txid]
-  /insight-api-dash/tx/ebdca263fe1c75c8609ce8fe3d82a320a0b3ca840f4df995883f5dab1b9ff8d9
-  /insight-api-dash/rawtx/[:rawid]
-  /insight-api-dash/rawtx/ebdca263fe1c75c8609ce8fe3d82a320a0b3ca840f4df995883f5dab1b9ff8d9
+  /insight-api-stash/tx/[:txid]
+  /insight-api-stash/tx/ebdca263fe1c75c8609ce8fe3d82a320a0b3ca840f4df995883f5dab1b9ff8d9
+  /insight-api-stash/rawtx/[:rawid]
+  /insight-api-stash/rawtx/ebdca263fe1c75c8609ce8fe3d82a320a0b3ca840f4df995883f5dab1b9ff8d9
 ```
 
 ### Address
 ```
-  /insight-api-dash/addr/[:addr][?noTxList=1][&from=&to=]
-  /insight-api-dash/addr/ybi3gej7Ea1MysEYLR7UMs3rMuLJH5aVsW?noTxList=1
-  /insight-api-dash/addr/yPv7h2i8v3dJjfSH4L3x91JSJszjdbsJJA?from=1000&to=2000
+  /insight-api-stash/addr/[:addr][?noTxList=1][&from=&to=]
+  /insight-api-stash/addr/ybi3gej7Ea1MysEYLR7UMs3rMuLJH5aVsW?noTxList=1
+  /insight-api-stash/addr/yPv7h2i8v3dJjfSH4L3x91JSJszjdbsJJA?from=1000&to=2000
 ```
 
 ### Address Properties
 ```
-  /insight-api-dash/addr/[:addr]/balance
-  /insight-api-dash/addr/[:addr]/totalReceived
-  /insight-api-dash/addr/[:addr]/totalSent
-  /insight-api-dash/addr/[:addr]/unconfirmedBalance
+  /insight-api-stash/addr/[:addr]/balance
+  /insight-api-stash/addr/[:addr]/totalReceived
+  /insight-api-stash/addr/[:addr]/totalSent
+  /insight-api-stash/addr/[:addr]/unconfirmedBalance
 ```
 The response contains the value in Satoshis.
 
 ### Unspent Outputs
 ```
-  /insight-api-dash/addr/[:addr]/utxo
+  /insight-api-stash/addr/[:addr]/utxo
 ```
 Sample return:
 ```
@@ -224,13 +224,13 @@ Sample return:
 ### Unspent Outputs for Multiple Addresses
 GET method:
 ```
-  /insight-api-dash/addrs/[:addrs]/utxo
-  /insight-api-dash/addrs/ygwNQgE5f15Ygopbs2KPRYMS4TcffqBpsz,ygw5yCtVkx3hREke4L8qDqQtnNoAiPKTSx/utxo
+  /insight-api-stash/addrs/[:addrs]/utxo
+  /insight-api-stash/addrs/ygwNQgE5f15Ygopbs2KPRYMS4TcffqBpsz,ygw5yCtVkx3hREke4L8qDqQtnNoAiPKTSx/utxo
 ```
 
 POST method:
 ```
-  /insight-api-dash/addrs/utxo
+  /insight-api-stash/addrs/utxo
 ```
 
 POST params:
@@ -264,25 +264,25 @@ Sample output:
 
 ### Transactions by Block
 ```
-  /insight-api-dash/txs/?block=HASH
-  /insight-api-dash/txs/?block=000000000814dd7cf470bd835334ea6624ebf0291ea857a5ab37c65592726375
+  /insight-api-stash/txs/?block=HASH
+  /insight-api-stash/txs/?block=000000000814dd7cf470bd835334ea6624ebf0291ea857a5ab37c65592726375
 ```
 ### Transactions by Address
 ```
-  /insight-api-dash/txs/?address=ADDR
-  /insight-api-dash/txs/?address=yWFfdp9nLUjy1kJczFhRuBMUjtTkTTiyMv
+  /insight-api-stash/txs/?address=ADDR
+  /insight-api-stash/txs/?address=yWFfdp9nLUjy1kJczFhRuBMUjtTkTTiyMv
 ```
 
 ### Transactions for Multiple Addresses
 GET method:
 ```
-  /insight-api-dash/addrs/[:addrs]/txs[?from=&to=]
-  /insight-api-dash/addrs/ygwNQgE5f15Ygopbs2KPRYMS4TcffqBpsz,ygw5yCtVkx3hREke4L8qDqQtnNoAiPKTSx/txs?from=0&to=20
+  /insight-api-stash/addrs/[:addrs]/txs[?from=&to=]
+  /insight-api-stash/addrs/ygwNQgE5f15Ygopbs2KPRYMS4TcffqBpsz,ygw5yCtVkx3hREke4L8qDqQtnNoAiPKTSx/txs?from=0&to=20
 ```
 
 POST method:
 ```
-  /insight-api-dash/addrs/txs
+  /insight-api-stash/addrs/txs
 ```
 
 POST params:
@@ -331,7 +331,7 @@ Note: if pagination params are not specified, the result is an array of transact
 #### Standard transaction
 POST method:
 ```
-  /insight-api-dash/tx/send
+  /insight-api-stash/tx/send
 ```
 POST params:
 ```
@@ -364,7 +364,7 @@ Conditions :
 
 POST method:
 ```
-  /insight-api-dash/tx/sendix
+  /insight-api-stash/tx/sendix
 ```
 POST params:
 ```
@@ -380,7 +380,7 @@ POST response:
 ### Sporks List
 GET method:
 ```
-  /insight-api-dash/sporks
+  /insight-api-stash/sporks
 ```
 
 Sample output:
@@ -403,7 +403,7 @@ Sample output:
 ### Proposals Informations
 GET method:
 ```
-  /insight-api-dash/gobject/info
+  /insight-api-stash/gobject/info
 ```
 
 Sample output:
@@ -426,7 +426,7 @@ Sample output:
 ### Proposals Count
 GET method:
 ```
-  /insight-api-dash/gobject/count
+  /insight-api-stash/gobject/count
 ```
 
 Sample output:
@@ -443,7 +443,7 @@ Sample output:
 ### Budget Proposal List
 GET method:
 ```
-  /insight-api-dash/gobject/list/proposal (or /insight-api-dash/gobject/list)
+  /insight-api-stash/gobject/list/proposal (or /insight-api-stash/gobject/list)
 ```
 
 Sample output:
@@ -456,7 +456,7 @@ Sample output:
           payment_amount: 5,
           start_epoch: 1482105600,
           type: 1,
-          url: 'https://www.dash.org'
+          url: 'https://www.stashpay.io'
         },
         AbsoluteYesCount: 40,
         YesCount: 40,
@@ -469,7 +469,7 @@ Sample output:
 ### Budget Triggers List
 GET method:
 ```
-  /insight-api-dash/gobject/list/trigger
+  /insight-api-stash/gobject/list/trigger
 ```
 
 Sample output:
@@ -489,8 +489,8 @@ Sample output:
 ### Budget Proposal Detail
 GET method:
 ```
-  /insight-api-dash/gobject/get/[:hash]
-  /insight-api-dash/gobject/get/b6af3e70c686f660541a77bc035df2e5e46841020699ce3ec8fad786f7d1aa35
+  /insight-api-stash/gobject/get/[:hash]
+  /insight-api-stash/gobject/get/b6af3e70c686f660541a77bc035df2e5e46841020699ce3ec8fad786f7d1aa35
 ```
 
 Sample output:
@@ -505,7 +505,7 @@ Sample output:
           payment_amount: 5,
           start_epoch: 1482105600,
           type: 1,
-          url: 'https://www.dash.org'
+          url: 'https://www.stashpay.io'
         },
         CreationTime: 1482223714,
         FundingResult: {
@@ -538,8 +538,8 @@ Sample output:
 
 GET method:
 ```
-  /insight-api-dash/gobject/check/[:hexData]
-  /insight-api-dash/gobject/check/5b5b2270726f706f736[..]
+  /insight-api-stash/gobject/check/[:hexData]
+  /insight-api-stash/gobject/check/5b5b2270726f706f736[..]
 ```
 
 Sample output:
@@ -551,14 +551,14 @@ Sample output:
 
 GET method:
 ```
-  /insight-api-dash/gobject/deserialize/[:hexData]
-  /insight-api-dash/gobject/deserialize/5b5b2270726f706f736[..]
+  /insight-api-stash/gobject/deserialize/[:hexData]
+  /insight-api-stash/gobject/deserialize/5b5b2270726f706f736[..]
 ```
 
 Sample output:
 ```
 {
-  "result":"[[\"proposal\",{\"end_epoch\":1519848619,\"name\":\"ghijklmnopqrstuvwxyz01234567891519097947\",\"payment_address\":\"yik5HAgVAgjH1oZKjcDfvcf22bwBNbSYzB\",\"payment_amount\":10,\"start_epoch\":1519097947,\"type\":1,\"url\":\"https://www.dashcentral.org/p/test_proposal_1519097947\"}]]",
+  "result":"[[\"proposal\",{\"end_epoch\":1519848619,\"name\":\"ghijklmnopqrstuvwxyz01234567891519097947\",\"payment_address\":\"yik5HAgVAgjH1oZKjcDfvcf22bwBNbSYzB\",\"payment_amount\":10,\"start_epoch\":1519097947,\"type\":1,\"url\":\"https://www.stashcentral.org/p/test_proposal_1519097947\"}]]",
   "error":null,
   "id":78637
 }
@@ -568,14 +568,14 @@ Sample output:
 
 GET method:
 ```
-  /insight-api-dash/gobject/votes/current/[:hash]
-  /insight-api-dash/gobject/votes/current/fbda8cdc1f48917f53b7d63fbce81c85d6dedd3d0e476e979926dfd154b84034
+  /insight-api-stash/gobject/votes/current/[:hash]
+  /insight-api-stash/gobject/votes/current/fbda8cdc1f48917f53b7d63fbce81c85d6dedd3d0e476e979926dfd154b84034
 ```
 
 Sample output:
 ```
 {
-  "result":"[[\"proposal\",{\"end_epoch\":1519848619,\"name\":\"ghijklmnopqrstuvwxyz01234567891519097947\",\"payment_address\":\"yik5HAgVAgjH1oZKjcDfvcf22bwBNbSYzB\",\"payment_amount\":10,\"start_epoch\":1519097947,\"type\":1,\"url\":\"https://www.dashcentral.org/p/test_proposal_1519097947\"}]]",
+  "result":"[[\"proposal\",{\"end_epoch\":1519848619,\"name\":\"ghijklmnopqrstuvwxyz01234567891519097947\",\"payment_address\":\"yik5HAgVAgjH1oZKjcDfvcf22bwBNbSYzB\",\"payment_amount\":10,\"start_epoch\":1519097947,\"type\":1,\"url\":\"https://www.stashcentral.org/p/test_proposal_1519097947\"}]]",
   "error":null,
   "id":78637
 }
@@ -585,8 +585,8 @@ Sample output:
 
 GET method:
 ```
-  /insight-api-dash/governance/budget/[:blockIndex]
-  /insight-api-dash/governance/budget/79872
+  /insight-api-stash/governance/budget/[:blockIndex]
+  /insight-api-stash/governance/budget/79872
 ```
 
 Sample output:
@@ -602,7 +602,7 @@ Sample output:
 
 POST method:
 ```
-  /insight-api-dash/gobject/submit
+  /insight-api-stash/gobject/submit
 ```
 
 Exemple input :
@@ -627,12 +627,12 @@ Sample output:
 
 ### Masternodes List
 ```
-  /insight-api-dash/masternodes/list
+  /insight-api-stash/masternodes/list
 ```
 ### Validate Masternode
 ```
-  /insight-api-dash/masternodes/validate/[:payee]
-  /insight-api-dash/masternodes/validate/yRuALkPpeYpTgxdNn2L5YgGktASJYDYPAo
+  /insight-api-stash/masternodes/validate/[:payee]
+  /insight-api-stash/masternodes/validate/yRuALkPpeYpTgxdNn2L5YgGktASJYDYPAo
 ```
 
 Sample valid output:
@@ -652,17 +652,17 @@ Sample valid output:
 
 ### Historic Blockchain Data Sync Status
 ```
-  /insight-api-dash/sync
+  /insight-api-stash/sync
 ```
 
 ### Live Network P2P Data Sync Status
 ```
-  /insight-api-dash/peer
+  /insight-api-stash/peer
 ```
 
 ### Status of the Bitcoin Network
 ```
-  /insight-api-dash/status?q=xxx
+  /insight-api-stash/status?q=xxx
 ```
 
 Where "xxx" can be:
@@ -675,7 +675,7 @@ Where "xxx" can be:
 
 ### Utility Methods
 ```
-  /insight-api-dash/utils/estimatefee[?nbBlocks=2]
+  /insight-api-stash/utils/estimatefee[?nbBlocks=2]
 ```
 
 ## Web Socket API
@@ -808,8 +808,8 @@ There are a few changes to the `GET` endpoint for `/addr/[:address]`:
 
 Some additional general notes:
 - The transaction history for an address will be sorted in block order
-- The response for the `/sync` endpoint does not include `startTs` and `endTs` as the sync is no longer relevant as indexes are built in dashd.
-- The endpoint for `/peer` is no longer relevant connection to dashd is via ZMQ.
+- The response for the `/sync` endpoint does not include `startTs` and `endTs` as the sync is no longer relevant as indexes are built in stashd.
+- The endpoint for `/peer` is no longer relevant connection to stashd is via ZMQ.
 - `/tx` endpoint results will now include block height, and spentTx related fields will be set to `null` if unspent.
 - `/block` endpoint results does not include `confirmations` and will include `poolInfo`.
 
@@ -828,7 +828,7 @@ The `/tx/<txid>` endpoint JSON response will not include the following fields on
 object.
 - `spentTs`
 
-The `/status?q=getTxOutSetInfo` method has also been removed due to the query being very slow and locking dashd.
+The `/status?q=getTxOutSetInfo` method has also been removed due to the query being very slow and locking stashd.
 
 Plug-in support for Insight API is also no longer available, as well as the endpoints:
 - `/email/retrieve`
@@ -838,4 +838,4 @@ Caching support has not yet been added in the v0.3 upgrade.
 
 ## Resources
 
-- (Medium)[How to setup a Dash Instant-Send Transaction using Insight API?????????The comprehensive way](https://medium.com/@obusco/setup-instant-send-transaction-the-comprehensive-way-a80a8a0572e)
+- (Medium)[How to setup a Stash Instant-Send Transaction using Insight API?????????The comprehensive way](https://medium.com/@obusco/setup-instant-send-transaction-the-comprehensive-way-a80a8a0572e)
