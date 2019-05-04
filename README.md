@@ -62,7 +62,7 @@ This is a backend-only service. If you're looking for the web frontend applicati
 - [Notes on Upgrading from v0.3](#notes-on-upgrading-from-v03)
 - [Notes on Upgrading from v0.2](#notes-on-upgrading-from-v02)
 - [Resources](#resources)
-- [License](https://github.com/stashpayio/insight-api-stash/blob/master/LICENSE)
+- [License](https://github.com/stashpayio/api/blob/master/LICENSE)
 
 ## Getting Started
 
@@ -110,15 +110,15 @@ Or disabled entirely with:
 
 ### Block
 ```
-  /insight-api-stash/block/[:hash]
-  /insight-api-stash/block/0000000006e7b38e8ab2d351239019c01de9a148b5baef58cfe52dfd9917cedc
+  /api/block/[:hash]
+  /api/block/0000000006e7b38e8ab2d351239019c01de9a148b5baef58cfe52dfd9917cedc
 ```
 
 ### Block Index
 Get block hash by height
 ```
-  /insight-api-stash/block-index/[:height]
-  /insight-api-stash/block-index/0
+  /api/block-index/[:height]
+  /api/block-index/0
 ```
 This would return:
 ```
@@ -131,7 +131,7 @@ which is the hash of the TestNet Genesis block (0 height)
 
 ### Raw Block
 ```
-  /insight-api-stash/rawblock/[:blockHash]
+  /api/rawblock/[:blockHash]
 ```
 
 This would return:
@@ -145,7 +145,7 @@ This would return:
 
 Get block summaries by date:
 ```
-  /insight-api-stash/blocks?limit=3&blockDate=2017-04-22
+  /api/blocks?limit=3&blockDate=2017-04-22
 ```
 
 Example response:
@@ -179,31 +179,31 @@ Example response:
 
 ### Transaction
 ```
-  /insight-api-stash/tx/[:txid]
-  /insight-api-stash/tx/ebdca263fe1c75c8609ce8fe3d82a320a0b3ca840f4df995883f5dab1b9ff8d9
-  /insight-api-stash/rawtx/[:rawid]
-  /insight-api-stash/rawtx/ebdca263fe1c75c8609ce8fe3d82a320a0b3ca840f4df995883f5dab1b9ff8d9
+  /api/tx/[:txid]
+  /api/tx/ebdca263fe1c75c8609ce8fe3d82a320a0b3ca840f4df995883f5dab1b9ff8d9
+  /api/rawtx/[:rawid]
+  /api/rawtx/ebdca263fe1c75c8609ce8fe3d82a320a0b3ca840f4df995883f5dab1b9ff8d9
 ```
 
 ### Address
 ```
-  /insight-api-stash/addr/[:addr][?noTxList=1][&from=&to=]
-  /insight-api-stash/addr/ybi3gej7Ea1MysEYLR7UMs3rMuLJH5aVsW?noTxList=1
-  /insight-api-stash/addr/yPv7h2i8v3dJjfSH4L3x91JSJszjdbsJJA?from=1000&to=2000
+  /api/addr/[:addr][?noTxList=1][&from=&to=]
+  /api/addr/ybi3gej7Ea1MysEYLR7UMs3rMuLJH5aVsW?noTxList=1
+  /api/addr/yPv7h2i8v3dJjfSH4L3x91JSJszjdbsJJA?from=1000&to=2000
 ```
 
 ### Address Properties
 ```
-  /insight-api-stash/addr/[:addr]/balance
-  /insight-api-stash/addr/[:addr]/totalReceived
-  /insight-api-stash/addr/[:addr]/totalSent
-  /insight-api-stash/addr/[:addr]/unconfirmedBalance
+  /api/addr/[:addr]/balance
+  /api/addr/[:addr]/totalReceived
+  /api/addr/[:addr]/totalSent
+  /api/addr/[:addr]/unconfirmedBalance
 ```
 The response contains the value in Satoshis.
 
 ### Unspent Outputs
 ```
-  /insight-api-stash/addr/[:addr]/utxo
+  /api/addr/[:addr]/utxo
 ```
 Sample return:
 ```
@@ -224,13 +224,13 @@ Sample return:
 ### Unspent Outputs for Multiple Addresses
 GET method:
 ```
-  /insight-api-stash/addrs/[:addrs]/utxo
-  /insight-api-stash/addrs/ygwNQgE5f15Ygopbs2KPRYMS4TcffqBpsz,ygw5yCtVkx3hREke4L8qDqQtnNoAiPKTSx/utxo
+  /api/addrs/[:addrs]/utxo
+  /api/addrs/ygwNQgE5f15Ygopbs2KPRYMS4TcffqBpsz,ygw5yCtVkx3hREke4L8qDqQtnNoAiPKTSx/utxo
 ```
 
 POST method:
 ```
-  /insight-api-stash/addrs/utxo
+  /api/addrs/utxo
 ```
 
 POST params:
@@ -264,25 +264,25 @@ Sample output:
 
 ### Transactions by Block
 ```
-  /insight-api-stash/txs/?block=HASH
-  /insight-api-stash/txs/?block=000000000814dd7cf470bd835334ea6624ebf0291ea857a5ab37c65592726375
+  /api/txs/?block=HASH
+  /api/txs/?block=000000000814dd7cf470bd835334ea6624ebf0291ea857a5ab37c65592726375
 ```
 ### Transactions by Address
 ```
-  /insight-api-stash/txs/?address=ADDR
-  /insight-api-stash/txs/?address=yWFfdp9nLUjy1kJczFhRuBMUjtTkTTiyMv
+  /api/txs/?address=ADDR
+  /api/txs/?address=yWFfdp9nLUjy1kJczFhRuBMUjtTkTTiyMv
 ```
 
 ### Transactions for Multiple Addresses
 GET method:
 ```
-  /insight-api-stash/addrs/[:addrs]/txs[?from=&to=]
-  /insight-api-stash/addrs/ygwNQgE5f15Ygopbs2KPRYMS4TcffqBpsz,ygw5yCtVkx3hREke4L8qDqQtnNoAiPKTSx/txs?from=0&to=20
+  /api/addrs/[:addrs]/txs[?from=&to=]
+  /api/addrs/ygwNQgE5f15Ygopbs2KPRYMS4TcffqBpsz,ygw5yCtVkx3hREke4L8qDqQtnNoAiPKTSx/txs?from=0&to=20
 ```
 
 POST method:
 ```
-  /insight-api-stash/addrs/txs
+  /api/addrs/txs
 ```
 
 POST params:
@@ -331,7 +331,7 @@ Note: if pagination params are not specified, the result is an array of transact
 #### Standard transaction
 POST method:
 ```
-  /insight-api-stash/tx/send
+  /api/tx/send
 ```
 POST params:
 ```
@@ -364,7 +364,7 @@ Conditions :
 
 POST method:
 ```
-  /insight-api-stash/tx/sendix
+  /api/tx/sendix
 ```
 POST params:
 ```
@@ -380,7 +380,7 @@ POST response:
 ### Sporks List
 GET method:
 ```
-  /insight-api-stash/sporks
+  /api/sporks
 ```
 
 Sample output:
@@ -403,7 +403,7 @@ Sample output:
 ### Proposals Informations
 GET method:
 ```
-  /insight-api-stash/gobject/info
+  /api/gobject/info
 ```
 
 Sample output:
@@ -426,7 +426,7 @@ Sample output:
 ### Proposals Count
 GET method:
 ```
-  /insight-api-stash/gobject/count
+  /api/gobject/count
 ```
 
 Sample output:
@@ -443,7 +443,7 @@ Sample output:
 ### Budget Proposal List
 GET method:
 ```
-  /insight-api-stash/gobject/list/proposal (or /insight-api-stash/gobject/list)
+  /api/gobject/list/proposal (or /api/gobject/list)
 ```
 
 Sample output:
@@ -469,7 +469,7 @@ Sample output:
 ### Budget Triggers List
 GET method:
 ```
-  /insight-api-stash/gobject/list/trigger
+  /api/gobject/list/trigger
 ```
 
 Sample output:
@@ -489,8 +489,8 @@ Sample output:
 ### Budget Proposal Detail
 GET method:
 ```
-  /insight-api-stash/gobject/get/[:hash]
-  /insight-api-stash/gobject/get/b6af3e70c686f660541a77bc035df2e5e46841020699ce3ec8fad786f7d1aa35
+  /api/gobject/get/[:hash]
+  /api/gobject/get/b6af3e70c686f660541a77bc035df2e5e46841020699ce3ec8fad786f7d1aa35
 ```
 
 Sample output:
@@ -538,8 +538,8 @@ Sample output:
 
 GET method:
 ```
-  /insight-api-stash/gobject/check/[:hexData]
-  /insight-api-stash/gobject/check/5b5b2270726f706f736[..]
+  /api/gobject/check/[:hexData]
+  /api/gobject/check/5b5b2270726f706f736[..]
 ```
 
 Sample output:
@@ -551,8 +551,8 @@ Sample output:
 
 GET method:
 ```
-  /insight-api-stash/gobject/deserialize/[:hexData]
-  /insight-api-stash/gobject/deserialize/5b5b2270726f706f736[..]
+  /api/gobject/deserialize/[:hexData]
+  /api/gobject/deserialize/5b5b2270726f706f736[..]
 ```
 
 Sample output:
@@ -568,8 +568,8 @@ Sample output:
 
 GET method:
 ```
-  /insight-api-stash/gobject/votes/current/[:hash]
-  /insight-api-stash/gobject/votes/current/fbda8cdc1f48917f53b7d63fbce81c85d6dedd3d0e476e979926dfd154b84034
+  /api/gobject/votes/current/[:hash]
+  /api/gobject/votes/current/fbda8cdc1f48917f53b7d63fbce81c85d6dedd3d0e476e979926dfd154b84034
 ```
 
 Sample output:
@@ -585,8 +585,8 @@ Sample output:
 
 GET method:
 ```
-  /insight-api-stash/governance/budget/[:blockIndex]
-  /insight-api-stash/governance/budget/79872
+  /api/governance/budget/[:blockIndex]
+  /api/governance/budget/79872
 ```
 
 Sample output:
@@ -602,7 +602,7 @@ Sample output:
 
 POST method:
 ```
-  /insight-api-stash/gobject/submit
+  /api/gobject/submit
 ```
 
 Exemple input :
@@ -627,12 +627,12 @@ Sample output:
 
 ### Masternodes List
 ```
-  /insight-api-stash/masternodes/list
+  /api/masternodes/list
 ```
 ### Validate Masternode
 ```
-  /insight-api-stash/masternodes/validate/[:payee]
-  /insight-api-stash/masternodes/validate/yRuALkPpeYpTgxdNn2L5YgGktASJYDYPAo
+  /api/masternodes/validate/[:payee]
+  /api/masternodes/validate/yRuALkPpeYpTgxdNn2L5YgGktASJYDYPAo
 ```
 
 Sample valid output:
@@ -652,17 +652,17 @@ Sample valid output:
 
 ### Historic Blockchain Data Sync Status
 ```
-  /insight-api-stash/sync
+  /api/sync
 ```
 
 ### Live Network P2P Data Sync Status
 ```
-  /insight-api-stash/peer
+  /api/peer
 ```
 
 ### Status of the Bitcoin Network
 ```
-  /insight-api-stash/status?q=xxx
+  /api/status?q=xxx
 ```
 
 Where "xxx" can be:
@@ -675,7 +675,7 @@ Where "xxx" can be:
 
 ### Utility Methods
 ```
-  /insight-api-stash/utils/estimatefee[?nbBlocks=2]
+  /api/utils/estimatefee[?nbBlocks=2]
 ```
 
 ## Web Socket API
