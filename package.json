@@ -61,7 +61,7 @@
   "main": "lib",
   "stashcoreNode": "lib",
   "dependencies": {
-    "async": "*",        
+    "async": "*",
     "bignumber.js": "^9.0.0",
     "body-parser": "^1.13.3",
     "compression": "^1.6.1",
